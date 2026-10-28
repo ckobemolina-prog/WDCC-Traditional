@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shining Star Collision offers collision repair, auto body and paint work, and mechanical services in Amityville, New York.">
+  <title>Shining Star Collision | Collision Repair in Amityville, NY</title>
+    <style>
+    :root {
+      --ink: #242424;
+      --muted: #5b5b5b;
+      --black: #090909;
+      --charcoal: #191919;
+      --silver: #777;
+      --light-silver: #d9d9d9;
+      --line: #d4d4d4;
+      --surface: #f2f2f2;
+      --gold: #f5c400;
+      --dark-gold: #d5a900;
+      --white: #fff;
+      --max-width: 1120px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 20px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font: 15px/1.55 Arial, Helvetica, sans-serif;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button { font: inherit; }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+    .container { width: min(var(--max-width), calc(100% - 32px)); margin-inline: auto; }
+    .section { padding: 40px 0; }
+    .section--muted { border-block: 1px solid var(--line); background: var(--surface); }
+    h1, h2, h3 { margin: 0 0 12px; color: var(--black); line-height: 1.2; }
+    h1 { font-size: clamp(28px, 3vw, 38px); }
+    h2 { font-size: clamp(23px, 2.3vw, 29px); }
+    h3 { font-size: 17px; }
+    p { margin: 0 0 14px; }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #806600;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .section-heading { max-width: 760px; margin: 0 0 22px; text-align: left; }
+    .section-heading p { color: var(--muted); }
+    .btn {
+      display: inline-flex;
+      min-height: 40px;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 15px;
+      border: 1px solid var(--dark-gold);
+      border-radius: 3px;
+      color: #171717;
+      background: var(--gold);
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+    }
+    .btn:hover { background: #e7b600; }
+    .btn--outline { border-color: #aaa; color: #fff; background: transparent; }
+    .btn--outline:hover { color: var(--black); background: var(--light-silver); }
+    .btn--navy { border-color: var(--black); color: #fff; background: var(--charcoal); }
+    .btn--navy:hover { color: var(--black); background: var(--gold); }
+    .text-link { color: #262626; font-weight: 700; text-decoration-color: var(--dark-gold); text-underline-offset: 3px; }
+
+    /* Compact affiliate bar */
+    .utility-bar { color: #fff; background: var(--black); border-bottom: 2px solid #343434; }
+    .utility-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px 20px; min-height: 48px; padding-block: 5px; }
+    .affiliate-group { display: flex; min-width: 0; align-items: center; gap: 12px; }
+    .affiliate-label {
+      flex: 0 0 auto;
+      margin: 0;
+      padding-left: 10px;
+      border-left: 4px solid var(--gold);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .affiliate-logos { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .affiliate-logo-link[aria-current="page"] { display: none; }
+    .affiliate-logo-link {
+      display: inline-flex;
+      min-width: 48px;
+      height: 38px;
+      align-items: center;
+      justify-content: center;
+      padding: 3px 6px;
+      overflow: hidden;
+      border: 1px solid #b9b9b9;
+      border-radius: 3px;
+      background: #fff;
+    }
+    .affiliate-logo { width: 150px; height: 30px; object-fit: contain; }
+    .affiliate-logo--wdc { width: 48px; }
+    .language-toggle {
+      flex: 0 0 auto;
+      padding: 5px 10px;
+      border: 1px solid var(--dark-gold);
+      border-radius: 3px;
+      color: #111;
+      background: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Separate brand masthead and navigation row */
+    .site-header { background: #fff; border-bottom: 3px solid var(--gold); }
+    .header-inner { display: flex; min-height: 78px; align-items: center; justify-content: space-between; gap: 14px; padding-block: 10px; }
+    .brand { display: flex; min-width: 0; align-items: center; gap: 10px; text-decoration: none; }
+    .brand-mark { width: 158px; height: 44px; flex: 0 0 auto; object-fit: contain; }
+    .brand-name { display: block; color: #111; font-size: 16px; font-weight: 800; line-height: 1.2; }
+    .brand-tagline { display: block; margin-top: 3px; color: #555; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .header-cta { flex: 0 0 auto; white-space: nowrap; }
+    .nav-shell { color: #fff; background: var(--charcoal); border-top: 1px solid #444; }
+    .nav-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0 18px; }
+    .header-phone { margin-right: auto; color: #fff; font-weight: 700; text-decoration: none; }
+    .nav-toggle {
+      display: inline-flex;
+      min-height: 42px;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 0;
+      border: 0;
+      color: #fff;
+      background: transparent;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .nav-toggle span:first-child { color: var(--gold); font-size: 20px; }
+    .main-nav { display: none; flex: 1 0 100%; padding: 4px 0 10px; border-top: 1px solid #444; }
+    .main-nav.is-open { display: block; }
+    .nav-links { display: flex; flex-direction: column; gap: 0; margin: 0; padding: 0; list-style: none; }
+    .nav-links a { display: block; padding: 10px 12px; border-bottom: 1px solid #3b3b3b; color: #fff; font-weight: 700; text-decoration: none; }
+    .nav-links a:hover { color: var(--black); background: var(--gold); }
+
+    /* Side-by-side service introduction and workshop image */
+    .hero { padding: 24px 0; background: #e9e9e9; }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      overflow: hidden;
+      border: 1px solid #bdbdbd;
+      border-left: 5px solid var(--gold);
+      background: var(--charcoal);
+    }
+    .hero-content { align-self: center; padding: 32px; color: #fff; }
+    .hero .eyebrow { color: var(--gold); }
+    .hero h1 { max-width: 540px; color: #fff; }
+    .hero-copy { max-width: 540px; color: #f1f1f1; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+    .hero-note { margin: 15px 0 0; color: #e4e4e4; font-size: 13px; }
+    .hero-image { width: 100%; height: 100%; min-height: 340px; object-fit: cover; object-position: center; }
+
+    /* Shop highlights */
+    .trust-strip { border-bottom: 1px solid var(--line); background: #fff; }
+    .trust-items { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .trust-item { display: flex; min-width: 0; align-items: center; gap: 9px; padding: 13px 10px; border-right: 1px solid var(--line); color: #262626; font-size: 13px; font-weight: 700; text-decoration: none; }
+    .trust-item:last-child { border-right: 0; }
+    .trust-item:hover { background: #f7f4e7; }
+    .trust-symbol { color: #856900; font-weight: 800; }
+
+    /* Conventional service directory */
+    .service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .service-card { min-width: 0; padding: 18px; border: 1px solid #c9c9c9; border-top: 3px solid var(--silver); background: #fff; }
+    .service-icon { display: grid; width: 32px; height: 32px; place-items: center; margin-bottom: 9px; border: 1px solid #d1bb59; color: #5f4d00; background: #fbf4d5; font-weight: 700; }
+    .service-card h3 { margin-bottom: 7px; }
+    .service-card p { margin: 0; color: var(--muted); }
+    .service-footer { margin-top: 20px; }
+    .service-collage-wrap { margin-top: 24px; }
+    .service-collage { margin: 0; border: 2px solid var(--dark-gold); background: #fff; }
+    .service-collage img { width: 100%; height: auto; }
+    .service-collage figcaption {
+      padding: 9px 10px;
+      border-top: 2px solid var(--gold);
+      color: #f1f1f1;
+      background: var(--charcoal);
+      font-size: 12px;
+    }
+
+    /* FAQs, contact, and footer */
+    .faq-list { display: grid; max-width: 900px; gap: 10px; }
+    .faq-item { padding: 14px 16px; border: 1px solid #c9c9c9; background: #fff; }
+    .faq-item summary { color: #222; font-weight: 700; cursor: pointer; }
+    .faq-item p { margin: 10px 0 0; color: var(--muted); }
+    address { margin-bottom: 12px; font-style: normal; }
+    .footer { padding: 24px 0 16px; color: #e6e6e6; background: var(--black); border-top: 3px solid var(--gold); }
+    .footer p { margin: 8px 0; }
+    .footer a { color: var(--gold); }
+    .footer-brand { color: #fff; font-size: 18px; font-weight: 800; }
+    .footer-bottom { padding-top: 10px; border-top: 1px solid #444; color: #ccc; font-size: 12px; }
+
+    @media (min-width: 800px) {
+      .nav-row { flex-wrap: nowrap; }
+      .header-phone { margin-right: 6px; }
+      .nav-toggle { display: none; }
+      .main-nav { display: block; flex: 0 1 auto; padding: 0; border: 0; }
+      .nav-links { flex-direction: row; align-items: stretch; }
+      .nav-links a { padding: 12px 13px; border-right: 1px solid #424242; border-bottom: 0; white-space: nowrap; }
+    }
+    @media (max-width: 900px) {
+      .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .trust-items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .trust-item:nth-child(2) { border-right: 0; }
+      .trust-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .hero-layout { grid-template-columns: 1fr 1fr; min-height: 538px; }
+      .hero-content { padding: 24px; }
+      .hero-image { min-height: 320px; }
+    }
+    @media (max-width: 620px) {
+      .container { width: calc(100% - 24px); }
+      .utility-inner { flex-wrap: wrap; justify-content: center; }
+      .affiliate-group { width: 100%; flex-direction: column; flex-wrap: nowrap; justify-content: center; gap: 8px; }
+      .affiliate-label { font-size: 15px; }
+      .affiliate-logos { width: 100%; justify-content: center; gap: 4px; }
+      .affiliate-logo-link { height: 34px; padding: 2px 4px; }
+      .affiliate-logo { width: 103px; height: 27px; }
+      .affiliate-logo--wdc { width: 42px; }
+      .language-toggle { margin: 0 auto 2px; }
+      .header-inner { flex-direction: column; align-items: stretch; gap: 8px; }
+      .brand { flex: 0 0 auto; width: 100%; }
+      .brand-mark { width: 136px; height: 40px; }
+      .brand-name { font-size: 14px; }
+      .brand-tagline { font-size: 9px; }
+      .header-cta { align-self: flex-end; margin-left: 0; }
+      .header-phone { display: none; }
+      .hero { padding: 14px 0; }
+      .hero-layout { grid-template-columns: minmax(0, 1fr); }
+      .hero-content { padding: 23px 20px; }
+      .hero-image { min-height: 0; height: auto; aspect-ratio: 16 / 9; object-position: center; }
+      .hero-actions .btn { flex: 1 1 auto; }
+      .trust-items { grid-template-columns: 1fr 1fr; }
+      .trust-item { padding: 10px 7px; font-size: 12px; }
+      .service-grid { grid-template-columns: 1fr; }
+      .section { padding: 30px 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="utility-bar">
+    <div class="container utility-inner">
+      <div class="affiliate-group">
+        <p class="affiliate-label">Meet our affiliates</p>
+        <div class="affiliate-logos" aria-label="Affiliate websites">
+          <a class="affiliate-logo-link" href="index.html" aria-label="West Delray Collision Center">
+            <img class="affiliate-logo affiliate-logo--wdc" src="assets/west-delray-collision-logo.webp" alt="West Delray Collision Center">
+          </a>
+          <a class="affiliate-logo-link" href="shining-star-collision.html" aria-current="page" aria-label="Shining Star Collision">
+            <img class="affiliate-logo" src="assets/shining-star-collision-logo.png" alt="Shining Star Collision">
+          </a>
+          <a class="affiliate-logo-link" href="the-collision-star.html" aria-label="The Collision Star">
+            <img class="affiliate-logo" src="assets/collision-star-logo.jpg" alt="The Collision Star">
+          </a>
+        </div>
+      </div>
+      <button class="language-toggle" type="button" id="language-toggle" aria-label="Switch page language to Spanish">Hablamos Español</button>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="Shining Star Collision home">
+        <img class="brand-mark" src="assets/shining-star-collision-logo.png" alt="Shining Star Collision logo" width="190" height="44">
+        <span>
+          <span class="brand-name">Shining Star Collision</span>
+          <span class="brand-tagline">Collision Repair &amp; Auto Services</span>
+        </span>
+      </a>
+
+      <a class="btn btn--red header-cta" href="tel:+15167982279">Schedule an Appointment</a>
+    </div>
+    <div class="nav-shell">
+      <div class="container nav-row">
+        <a class="header-phone" href="tel:+15167982279">(516) 798-2279</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation menu">
+          <span aria-hidden="true">☰</span><span class="nav-toggle-label">Menu</span>
+        </button>
+        <nav class="main-nav" id="main-navigation" aria-label="Main navigation">
+          <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="#before-after">Before and After</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-layout">
+        <div class="hero-content">
+          <p class="eyebrow">Collision Repair in Amityville, New York</p>
+          <h1 id="hero-title">Collision Repair and Auto Care for Amityville Drivers</h1>
+          <p class="hero-copy">From dents and collision damage to paint and mechanical services, Shining Star Collision helps drivers get back on the road.</p>
+          <div class="hero-actions">
+            <a class="btn btn--red" href="tel:+15167982279">Call the Shop</a>
+            <a class="btn btn--outline" href="#services">Explore Services</a>
+          </div>
+          <p class="hero-note">ASE and I-CAR Gold Class technicians · Towing and loaner vehicle support</p>
+        </div>
+        <img class="hero-image" src="assets/shining-star-collision-hero.png" alt="Silver sedan and technician in an automotive repair workshop" width="1672" height="940" fetchpriority="high">
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Shop highlights">
+      <div class="container trust-items">
+        <a class="trust-item" href="#service-collision"><span class="trust-symbol" aria-hidden="true">✓</span><span>Collision Repair</span></a>
+        <a class="trust-item" href="#service-body"><span class="trust-symbol" aria-hidden="true">✦</span><span>Dent, Paint &amp; Body Work</span></a>
+        <a class="trust-item" href="#service-engine"><span class="trust-symbol" aria-hidden="true">⚙</span><span>Mechanical Services</span></a>
+        <a class="trust-item" href="#contact"><span class="trust-symbol" aria-hidden="true">↗</span><span>Towing &amp; Loaner Support</span></a>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">About Shining Star Collision</p>
+          <h2 id="about-title">A Helpful Partner Through the Repair Process</h2>
+          <p>Shining Star Collision describes itself as a dealer-preferred collision repair center serving Amityville and nearby communities.</p>
+        </div>
+        <p>After an accident, the team can assess vehicle damage, order needed parts, and help coordinate the insurance claim. The shop also says it can arrange towing and a loaner vehicle.</p>
+        <p>Its repair approach focuses on restoring a vehicle to its pre-accident condition. The shop also describes addressing eligible unrelated dents and scratches that were present before the collision.</p>
+        <p>Shining Star Collision lists ASE and I-CAR Gold Class credentials for its technicians and says its facility is equipped for professional collision repair.</p>
+      </div>
+    </section>
+
+    <section class="section section--muted" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Our Services</p>
+          <h2 id="services-title">Collision Repair, Body Work, and Auto Services</h2>
+          <p>Every service named in the collage is listed below, from collision and body work to mechanical services.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card" id="service-body"><div class="service-icon" aria-hidden="true">⚙</div><h3>Auto Body Repair Center</h3><p>Auto body repair services for vehicle damage and restoration.</p></article>
+          <article class="service-card" id="service-dent"><div class="service-icon" aria-hidden="true">✦</div><h3>Dent Repair Shop</h3><p>Dent repair for vehicle body panels.</p></article>
+          <article class="service-card" id="service-collision"><div class="service-icon" aria-hidden="true">⚙</div><h3>Collision Repair</h3><p>Collision damage repair, with the goal of restoring the vehicle to its pre-accident condition.</p></article>
+          <article class="service-card" id="service-paint"><div class="service-icon" aria-hidden="true">✦</div><h3>Paint &amp; Body Shop</h3><p>Paint and body services for damaged vehicle panels and finishes.</p></article>
+          <article class="service-card" id="service-brakes"><div class="service-icon" aria-hidden="true">⚒</div><h3>Brake Services</h3><p>Brake service and repair.</p></article>
+          <article class="service-card" id="service-oil"><div class="service-icon" aria-hidden="true">⚙</div><h3>Oil Change</h3><p>Oil change service for your vehicle.</p></article>
+          <article class="service-card" id="service-engine"><div class="service-icon" aria-hidden="true">⚒</div><h3>Engine Repair</h3><p>Repair service for engine concerns.</p></article>
+          <article class="service-card" id="service-electrical"><div class="service-icon" aria-hidden="true">▤</div><h3>Vehicle Electrical Repair</h3><p>Electrical system repair for your vehicle.</p></article>
+          <article class="service-card" id="service-lights"><div class="service-icon" aria-hidden="true">✦</div><h3>Headlight &amp; Taillight Services</h3><p>Service for vehicle headlights and taillights.</p></article>
+          <article class="service-card" id="service-air-conditioning"><div class="service-icon" aria-hidden="true">❄</div><h3>Air Conditioning Services</h3><p>Air conditioning service listed among the shop's mechanical services.</p></article>
+          <article class="service-card" id="service-tires"><div class="service-icon" aria-hidden="true">◉</div><h3>Tire Rotation &amp; Wheel Alignment</h3><p>Tire rotation and wheel alignment services.</p></article>
+          <article class="service-card" id="service-transmission"><div class="service-icon" aria-hidden="true">⚙</div><h3>Transmission Repair</h3><p>Repair service for vehicle transmissions.</p></article>
+          <article class="service-card" id="service-battery"><div class="service-icon" aria-hidden="true">▣</div><h3>Battery Services</h3><p>Battery service for your vehicle.</p></article>
+          <article class="service-card" id="service-suspension"><div class="service-icon" aria-hidden="true">⚒</div><h3>Suspension Services</h3><p>Service for vehicle suspension systems.</p></article>
+        </div>
+        <div class="service-collage-wrap">
+          <p class="eyebrow">Service Gallery</p>
+          <figure class="service-collage">
+            <img src="assets/shining-star-services-collage.png" alt="Service collage showing auto body repair center, dent repair shop, collision repair, paint and body shop, brake services, oil change, engine repair, vehicle electrical repair, headlight and taillight services, tire rotation and wheel alignment, transmission repair, battery services, and suspension services." loading="lazy">
+            <figcaption>The service gallery highlights 13 categories. Air conditioning service is also listed among the shop's mechanical services. Call the shop to confirm details.</figcaption>
+          </figure>
+        </div>
+        <div class="service-footer"><a class="btn btn--navy" href="tel:+15167982279">Call to Ask About a Service</a></div>
+      </div>
+    </section>
+
+    <section class="section section--muted" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">FAQs</p>
+          <h2 id="faq-title">Frequently Asked Questions</h2>
+          <p>Quick answers based on information published by Shining Star Collision.</p>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item"><summary>What services does Shining Star Collision offer?</summary><p>The shop lists collision repair, dent repair, paint and body work, and mechanical services including brakes, oil changes, engine, electrical, lighting, air conditioning, tires and alignment, transmission, battery, and suspension service.</p></details>
+          <details class="faq-item"><summary>Can the shop help after an accident?</summary><p>Shining Star Collision says it can arrange towing and a loaner vehicle, assess damage, order needed parts, and help manage the insurance claim.</p></details>
+          <details class="faq-item"><summary>What is the shop's repair approach?</summary><p>The shop says its goal is to restore a vehicle to its pre-accident condition and describes addressing eligible dents or scratches that were present before the collision.</p></details>
+          <details class="faq-item"><summary>Where is Shining Star Collision located?</summary><p>The shop is at 370 Merrick Road, Amityville, NY 11701. Call (516) 798-2279 for details.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="before-after" aria-labelledby="before-after-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Before and After</p>
+          <h2 id="before-after-title">Aiming to Restore Your Vehicle to Its Pre-Accident Condition</h2>
+          <p>Shining Star Collision describes its repair goal as improving a vehicle's condition after an accident. Contact the shop to ask about repair examples and the process for your vehicle.</p>
+        </div>
+        <div class="service-footer"><a class="btn btn--navy" href="tel:+15167982279">Ask About a Repair</a></div>
+      </div>
+    </section>
+
+    <section class="section section--muted" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Visit or Call</p>
+          <h2 id="contact-title">Contact Shining Star Collision</h2>
+          <p>Serving Amityville and surrounding areas.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <h3>Location</h3>
+            <address>370 Merrick Road<br>Amityville, NY 11701</address>
+            <a class="text-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=370+Merrick+Rd%2C+Amityville%2C+NY%2C+United+States%2C+11701" target="_blank" rel="noopener noreferrer">Get Directions →</a>
+          </article>
+          <article class="service-card">
+            <h3>Phone</h3>
+            <p>Call the shop to discuss repairs, towing, loaner vehicle support, or service availability.</p>
+            <a class="btn btn--red" href="tel:+15167982279">(516) 798-2279</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">Shining Star Collision</div>
+      <p>370 Merrick Road, Amityville, NY 11701 · <a href="tel:+15167982279">(516) 798-2279</a></p>
+      <div class="footer-bottom"><span>© 2026 Shining Star Collision</span></div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const button = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('#main-navigation');
+      const languageButton = document.querySelector('#language-toggle');
+      let currentLanguage = 'en';
+      const translations = {
+        'Meet our affiliates': 'Conozca a nuestros afiliados',
+        'Menu': 'Menú',
+        'Collision Repair & Auto Services': 'Reparación de colisiones y servicios automotrices',
+        'Services': 'Servicios',
+        'FAQs': 'Preguntas frecuentes',
+        'Before and After': 'Antes y después',
+        'About Us': 'Nosotros',
+        'Contact Us': 'Contacto',
+        'Schedule an Appointment': 'Programar una cita',
+        'Collision Repair in Amityville, New York': 'Reparación de colisiones en Amityville, Nueva York',
+        'Collision Repair and Auto Care for Amityville Drivers': 'Reparación de colisiones y servicios automotrices para conductores de Amityville',
+        'From dents and collision damage to paint and mechanical services, Shining Star Collision helps drivers get back on the road.': 'Desde abolladuras y daños por colisión hasta pintura y servicios mecánicos, Shining Star Collision ayuda a los conductores a volver a la carretera.',
+        'Call the Shop': 'Llame al taller',
+        'Explore Services': 'Ver servicios',
+        'ASE and I-CAR Gold Class technicians · Towing and loaner vehicle support': 'Técnicos ASE e I-CAR Gold Class · Remolque y vehículo de cortesía',
+        'Shop highlights': 'Aspectos destacados del taller',
+        'Collision Repair': 'Reparación de colisiones',
+        'Dent, Paint & Body Work': 'Abolladuras, pintura y carrocería',
+        'Mechanical Services': 'Servicios mecánicos',
+        'Towing & Loaner Support': 'Remolque y vehículo de cortesía',
+        'About Shining Star Collision': 'Acerca de Shining Star Collision',
+        'A Helpful Partner Through the Repair Process': 'Un aliado durante el proceso de reparación',
+        'Shining Star Collision describes itself as a dealer-preferred collision repair center serving Amityville and nearby communities.': 'Shining Star Collision se describe como un centro de reparación de colisiones preferido por concesionarios que atiende a Amityville y las comunidades cercanas.',
+        'After an accident, the team can assess vehicle damage, order needed parts, and help coordinate the insurance claim. The shop also says it can arrange towing and a loaner vehicle.': 'Después de un accidente, el equipo puede evaluar los daños, pedir las piezas necesarias y ayudar a coordinar el reclamo al seguro. El taller también indica que puede organizar el remolque y un vehículo de cortesía.',
+        'Its repair approach focuses on restoring a vehicle to its pre-accident condition. The shop also describes addressing eligible unrelated dents and scratches that were present before the collision.': 'Su enfoque de reparación busca restaurar el vehículo a su condición previa al accidente. El taller también indica que puede atender abolladuras y rayones previos que cumplan los requisitos.',
+        'Shining Star Collision lists ASE and I-CAR Gold Class credentials for its technicians and says its facility is equipped for professional collision repair.': 'Shining Star Collision indica que sus técnicos cuentan con credenciales ASE e I-CAR Gold Class y que sus instalaciones están equipadas para la reparación profesional de colisiones.',
+        'Our Services': 'Nuestros servicios',
+        'Collision Repair, Body Work, and Auto Services': 'Reparación de colisiones, carrocería y servicios automotrices',
+        'Every service named in the collage is listed below, from collision and body work to mechanical services.': 'A continuación aparecen todos los servicios del collage, desde reparación de colisiones y carrocería hasta servicios mecánicos.',
+        'Auto Body Repair Center': 'Centro de reparación de carrocería',
+        'Auto body repair services for vehicle damage and restoration.': 'Servicios de reparación de carrocería para daños y restauración del vehículo.',
+        'Dent Repair Shop': 'Reparación de abolladuras',
+        'Dent repair for vehicle body panels.': 'Reparación de abolladuras en los paneles de la carrocería.',
+        'Collision damage repair, with the goal of restoring the vehicle to its pre-accident condition.': 'Reparación de daños por colisión con el objetivo de restaurar el vehículo a su condición previa al accidente.',
+        'Paint & Body Shop': 'Pintura y carrocería',
+        'Paint and body services for damaged vehicle panels and finishes.': 'Servicios de pintura y carrocería para paneles y acabados dañados.',
+        'Brake Services': 'Servicio de frenos',
+        'Brake service and repair.': 'Servicio y reparación de frenos.',
+        'Oil Change': 'Cambio de aceite',
+        'Oil change service for your vehicle.': 'Servicio de cambio de aceite para su vehículo.',
+        'Engine Repair': 'Reparación del motor',
+        'Repair service for engine concerns.': 'Servicio para reparar problemas del motor.',
+        'Vehicle Electrical Repair': 'Reparación eléctrica del vehículo',
+        'Electrical system repair for your vehicle.': 'Reparación del sistema eléctrico de su vehículo.',
+        'Headlight & Taillight Services': 'Servicio de faros y luces traseras',
+        'Service for vehicle headlights and taillights.': 'Servicio para los faros y las luces traseras del vehículo.',
+        'Air Conditioning Services': 'Servicio de aire acondicionado',
+        "Air conditioning service listed among the shop's mechanical services.": 'Servicio de aire acondicionado incluido entre los servicios mecánicos del taller.',
+        'Tire Rotation & Wheel Alignment': 'Rotación de neumáticos y alineación de ruedas',
+        'Tire rotation and wheel alignment services.': 'Servicios de rotación de neumáticos y alineación de ruedas.',
+        'Transmission Repair': 'Reparación de la transmisión',
+        'Repair service for vehicle transmissions.': 'Servicio de reparación de transmisiones.',
+        'Battery Services': 'Servicio de batería',
+        'Battery service for your vehicle.': 'Servicio de batería para su vehículo.',
+        'Suspension Services': 'Servicio de suspensión',
+        'Service for vehicle suspension systems.': 'Servicio para los sistemas de suspensión del vehículo.',
+        'Service Gallery': 'Galería de servicios',
+        "The service gallery highlights 13 categories. Air conditioning service is also listed among the shop's mechanical services. Call the shop to confirm details.": 'La galería destaca 13 categorías. El servicio de aire acondicionado también aparece entre los servicios mecánicos del taller. Llame para confirmar los detalles.',
+        'Call to Ask About a Service': 'Llame para consultar sobre un servicio',
+        'Frequently Asked Questions': 'Preguntas frecuentes',
+        'Quick answers based on information published by Shining Star Collision.': 'Respuestas breves basadas en la información publicada por Shining Star Collision.',
+        'What services does Shining Star Collision offer?': '¿Qué servicios ofrece Shining Star Collision?',
+        'The shop lists collision repair, dent repair, paint and body work, and mechanical services including brakes, oil changes, engine, electrical, lighting, air conditioning, tires and alignment, transmission, battery, and suspension service.': 'El taller ofrece reparación de colisiones y abolladuras, pintura y carrocería, además de servicios mecánicos como frenos, cambios de aceite, motor, electricidad, iluminación, aire acondicionado, neumáticos y alineación, transmisión, batería y suspensión.',
+        'Can the shop help after an accident?': '¿Puede ayudar el taller después de un accidente?',
+        'Shining Star Collision says it can arrange towing and a loaner vehicle, assess damage, order needed parts, and help manage the insurance claim.': 'Shining Star Collision indica que puede organizar el remolque y un vehículo de cortesía, evaluar los daños, pedir las piezas necesarias y ayudar a gestionar el reclamo al seguro.',
+        "What is the shop's repair approach?": '¿Cuál es el enfoque de reparación del taller?',
+        'The shop says its goal is to restore a vehicle to its pre-accident condition and describes addressing eligible dents or scratches that were present before the collision.': 'El taller dice que su objetivo es restaurar el vehículo a su condición previa al accidente y que puede atender abolladuras o rayones anteriores que cumplan los requisitos.',
+        'Where is Shining Star Collision located?': '¿Dónde se encuentra Shining Star Collision?',
+        'The shop is at 370 Merrick Road, Amityville, NY 11701. Call (516) 798-2279 for details.': 'El taller está en 370 Merrick Road, Amityville, NY 11701. Llame al (516) 798-2279 para más información.',
+        'Aiming to Restore Your Vehicle to Its Pre-Accident Condition': 'El objetivo: restaurar su vehículo a su condición previa al accidente',
+        "Shining Star Collision describes its repair goal as improving a vehicle's condition after an accident. Contact the shop to ask about repair examples and the process for your vehicle.": 'Shining Star Collision describe su objetivo como mejorar la condición del vehículo después de un accidente. Comuníquese con el taller para consultar ejemplos de reparaciones y el proceso para su vehículo.',
+        'Ask About a Repair': 'Consulte sobre una reparación',
+        'Visit or Call': 'Visítenos o llame',
+        'Contact Shining Star Collision': 'Comuníquese con Shining Star Collision',
+        'Serving Amityville and surrounding areas.': 'Atendemos Amityville y las áreas cercanas.',
+        'Location': 'Ubicación',
+        'Get Directions →': 'Cómo llegar →',
+        'Phone': 'Teléfono',
+        'Call the shop to discuss repairs, towing, loaner vehicle support, or service availability.': 'Llame al taller para consultar sobre reparaciones, remolque, vehículo de cortesía o disponibilidad de servicios.',
+        '© 2026 Shining Star Collision': '© 2026 Shining Star Collision'
+      };
+      const textNodes = [];
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      while (walker.nextNode()) {
+        const node = walker.currentNode;
+        if (node.parentElement && node.parentElement.closest('script, style')) continue;
+        if (node.nodeValue.trim()) textNodes.push({ node, original: node.nodeValue, key: node.nodeValue.trim() });
+      }
+      function setLanguage(language) {
+        currentLanguage = language;
+        textNodes.forEach(({ node, original, key }) => {
+          const leading = original.match(/^\s*/)[0];
+          const trailing = original.match(/\s*$/)[0];
+          const value = language === 'es' ? (translations[key] || key) : key;
+          node.nodeValue = leading + value + trailing;
+        });
+        document.documentElement.lang = language;
+        document.title = language === 'es'
+          ? 'Shining Star Collision | Reparación de colisiones en Amityville, NY'
+          : 'Shining Star Collision | Collision Repair in Amityville, NY';
+        document.querySelector('meta[name="description"]').content = language === 'es'
+          ? 'Shining Star Collision ofrece reparación de colisiones, carrocería, pintura y servicios mecánicos en Amityville, Nueva York.'
+          : 'Shining Star Collision offers collision repair, auto body and paint work, and mechanical services in Amityville, New York.';
+        document.querySelector('.service-collage img').alt = language === 'es'
+          ? 'Collage de servicios: reparación de carrocería, abolladuras y colisiones; pintura y carrocería; frenos, cambio de aceite, motor, sistema eléctrico, faros y luces traseras, rotación de neumáticos y alineación, transmisión, batería y suspensión.'
+          : 'Service collage showing auto body repair center, dent repair shop, collision repair, paint and body shop, brake services, oil change, engine repair, vehicle electrical repair, headlight and taillight services, tire rotation and wheel alignment, transmission repair, battery services, and suspension services.';
+        document.querySelector('.hero-image').alt = language === 'es'
+          ? 'Sedán plateado y técnico en un taller de reparación automotriz'
+          : 'Silver sedan and technician in an automotive repair workshop';
+        languageButton.textContent = language === 'en' ? 'Hablamos Español' : 'View in English';
+        languageButton.setAttribute('aria-label', language === 'en' ? 'Switch page language to Spanish' : 'Cambiar el idioma de la página a inglés');
+        nav.setAttribute('aria-label', language === 'en' ? 'Main navigation' : 'Navegación principal');
+        document.querySelector('.affiliate-logos').setAttribute('aria-label', language === 'en' ? 'Affiliate websites' : 'Sitios web de afiliados');
+        document.querySelector('.trust-strip').setAttribute('aria-label', language === 'en' ? 'Shop highlights' : 'Aspectos destacados del taller');
+        const menuOpen = nav.classList.contains('is-open');
+        button.setAttribute('aria-label', language === 'en'
+          ? (menuOpen ? 'Close navigation menu' : 'Open navigation menu')
+          : (menuOpen ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'));
+      }
+      languageButton.addEventListener('click', () => setLanguage(currentLanguage === 'en' ? 'es' : 'en'));
+      const closeMenu = () => {
+        nav.classList.remove('is-open');
+        button.setAttribute('aria-expanded', 'false');
+        button.setAttribute('aria-label', currentLanguage === 'en' ? 'Open navigation menu' : 'Abrir menú de navegación');
+        button.querySelector('span').textContent = '☰';
+      };
+      button.addEventListener('click', () => {
+        const open = nav.classList.toggle('is-open');
+        button.setAttribute('aria-expanded', String(open));
+        button.setAttribute('aria-label', currentLanguage === 'en'
+          ? (open ? 'Close navigation menu' : 'Open navigation menu')
+          : (open ? 'Cerrar menú de navegación' : 'Abrir menú de navegación'));
+        button.querySelector('span').textContent = open ? '×' : '☰';
+      });
+      nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+    })();
+  </script>
+</body>
+ </html>

@@ -1,0 +1,1099 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a43">
+  <meta name="description" content="West Delray Collision Center provides collision repair, frame realignment, bumper repair, paintless dent repair, and insurance claim assistance in Delray Beach, Florida.">
+  <title>West Delray Collision Center | Collision Repair</title>
+
+  <!--
+    WDC OPTION B — TRADITIONAL BASELINE
+    Self-contained single-file frontend: HTML5, CSS, and lightweight JavaScript.
+
+    Before public launch, verify the address, phone, hours, email, service claims,
+    insurance relationships, and customer-portal URL with WDC. Replace illustrative
+    photos and clearly marked review placeholders with approved real assets/content.
+    The estimate form is intentionally a frontend demo; it does not send or store data.
+  -->
+
+  <style>
+    :root {
+      --navy: #102a43;
+      --navy-deep: #081b2a;
+      --blue: #1c527c;
+      --red: #c62832;
+      --red-hover: #a51e27;
+      --ink: #1e2933;
+      --muted: #5d6b78;
+      --line: #dbe3e9;
+      --surface: #f3f6f8;
+      --white: #fff;
+      --gold: #f4b400;
+      --green: #2f7046;
+      --max-width: 1180px;
+      --radius: 12px;
+      --shadow: 0 12px 32px rgba(16, 42, 67, .12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 94px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font: 16px/1.6 Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    select:focus-visible, textarea:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+    .container { width: min(var(--max-width), calc(100% - 32px)); margin-inline: auto; }
+    .section { padding: 64px 0; }
+    .section--muted { background: var(--surface); }
+    .eyebrow {
+      margin: 0 0 9px;
+      color: var(--red);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { margin: 0 0 14px; color: var(--navy); line-height: 1.14; }
+    h1 { font-size: clamp(2.15rem, 7vw, 4.2rem); letter-spacing: -.035em; }
+    h2 { font-size: clamp(1.8rem, 4vw, 2.65rem); letter-spacing: -.025em; }
+    h3 { font-size: 1.15rem; }
+    p { margin: 0 0 14px; }
+    .section-heading { max-width: 720px; margin: 0 auto 32px; text-align: center; }
+    .section-heading p { color: var(--muted); }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 12px 19px;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      text-decoration: none;
+      text-align: center;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background .18s ease, transform .18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn--red { color: #fff; background: var(--red); }
+    .btn--red:hover { background: var(--red-hover); }
+    .btn--navy { color: #fff; background: var(--navy); }
+    .btn--navy:hover { background: var(--navy-deep); }
+    .btn--white { color: var(--navy); background: #fff; }
+    .btn--outline { color: #fff; border-color: rgba(255,255,255,.85); background: transparent; }
+    .btn--outline:hover { background: rgba(255,255,255,.13); }
+    .text-link { color: var(--red); font-weight: 800; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+
+    /* 1. Top utility bar */
+    .utility-bar { color: #fff; background: var(--navy-deep); font-size: .88rem; }
+    .utility-inner {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      padding-block: 9px; text-align: center;
+    }
+    .language-toggle {
+      padding: 0; border: 0; border-bottom: 1px dotted rgba(255,255,255,.85);
+      color: #fff; background: transparent; font-weight: 800; cursor: pointer;
+    }
+    .utility-contact { display: flex; flex-wrap: wrap; justify-content: center; gap: 7px 18px; }
+    .utility-bar a { color: #fff; font-weight: 800; text-decoration: none; }
+
+    /* 2. Brand and primary navigation */
+    .site-header {
+      position: sticky; top: 0; z-index: 100; background: #fff;
+      box-shadow: 0 3px 15px rgba(8,27,42,.09);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 78px; }
+    .brand { display: flex; align-items: center; gap: 11px; min-width: 0; text-decoration: none; }
+    .brand-mark {
+      display: block; width: 78px; height: 44px; flex: 0 0 auto;
+      object-fit: contain; background: transparent;
+    }
+    .brand-name { display: block; color: var(--navy); font-size: .96rem; line-height: 1.08; font-weight: 900; }
+    .brand-tagline { display: block; margin-top: 5px; color: var(--muted); font-size: .65rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .nav-toggle {
+      display: inline-grid; place-items: center; width: 44px; height: 44px; flex: 0 0 auto;
+      border: 1px solid var(--line); border-radius: 6px; color: var(--navy); background: #fff;
+      font-size: 1.35rem; cursor: pointer;
+    }
+    .main-nav {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      padding: 12px 16px 20px; border-top: 1px solid var(--line);
+      background: #fff; box-shadow: var(--shadow);
+    }
+    .main-nav.is-open { display: block; }
+    .nav-links { display: flex; flex-direction: column; gap: 2px; margin: 0; padding: 0; list-style: none; }
+    .nav-links a { display: block; padding: 11px 10px; border-radius: 5px; color: var(--navy); font-weight: 800; text-decoration: none; }
+    .nav-links a:hover { background: var(--surface); }
+    .header-cta { display: none; white-space: nowrap; }
+
+    /* 3. Hero */
+    .hero {
+      position: relative; display: flex; align-items: center; min-height: 570px; overflow: hidden;
+      color: #fff; background-color: var(--navy);
+      background-image: url("https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=2000&q=85");
+      background-position: center 55%; background-size: cover;
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background: rgba(10,25,47,.82);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 790px; padding-block: 68px; }
+    .hero .eyebrow { color: #ffc5c9; }
+    .hero h1 { max-width: 760px; color: #fff; }
+    .hero-copy { max-width: 630px; color: rgba(255,255,255,.92); font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-direction: column; gap: 12px; max-width: 340px; margin-top: 24px; }
+    .hero-note { margin: 20px 0 0; color: rgba(255,255,255,.86); font-size: .92rem; }
+
+    /* Trust strip */
+    .trust-strip { border-bottom: 1px solid var(--line); background: #fff; }
+    .trust-items { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .trust-item { display: flex; align-items: center; gap: 10px; padding: 16px 7px; color: var(--navy); font-size: .84rem; font-weight: 800; text-decoration: none; }
+    .trust-item:nth-child(odd) { border-right: 1px solid var(--line); }
+    .trust-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .trust-symbol { display: grid; place-items: center; width: 32px; height: 32px; flex: 0 0 auto; border-radius: 50%; color: var(--blue); background: #eaf1f6; font-weight: 900; }
+
+    /* 4. Services grid */
+    .service-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+    .service-card { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; box-shadow: 0 5px 16px rgba(16,42,67,.045); }
+    .service-icon { display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 17px; border-radius: 8px; color: var(--blue); background: #eaf1f6; font-size: 1.35rem; font-weight: 900; }
+    .service-card p { margin-bottom: 16px; color: var(--muted); }
+    .service-footer { margin-top: 28px; text-align: center; }
+    .faq-list { max-width: 900px; margin: 0 auto; display: grid; gap: 12px; }
+    .faq-item { padding: 18px 22px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    .faq-item summary { color: var(--navy); font-size: 1.08rem; font-weight: 800; cursor: pointer; }
+    .faq-item p { margin: 12px 0 0; color: var(--muted); }
+    .faq-list { max-width: 900px; margin: 0 auto; display: grid; gap: 12px; }
+    .faq-item { padding: 18px 22px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    .faq-item summary { color: var(--navy); font-size: 1.08rem; font-weight: 800; cursor: pointer; }
+    .faq-item p { margin: 12px 0 0; color: var(--muted); }
+
+    /* 5. Before-and-after gallery */
+    .gallery-layout { display: grid; grid-template-columns: 1fr; gap: 30px; align-items: center; }
+    .comparison { display: grid; grid-template-columns: 1fr 1fr; min-height: 235px; overflow: hidden; border-radius: var(--radius); background: #dce3e9; box-shadow: var(--shadow); }
+    .comparison figure { position: relative; min-width: 0; margin: 0; }
+    .comparison img { width: 100%; height: 100%; min-height: 235px; object-fit: cover; }
+    .comparison figcaption {
+      position: absolute; left: 9px; bottom: 9px; padding: 5px 8px; border-radius: 4px;
+      color: #fff; background: rgba(8,27,42,.9); font-size: .73rem; font-weight: 900;
+      letter-spacing: .05em; text-transform: uppercase;
+    }
+    .gallery-copy p { color: var(--muted); }
+    .small-note { margin-top: 12px; font-size: .82rem; color: var(--muted); }
+
+    /* 6. Reviews and AI summary */
+    .ai-summary {
+      display: grid; grid-template-columns: 1fr; gap: 18px; margin-bottom: 24px; padding: 25px;
+      border-radius: var(--radius); color: #fff; background: var(--navy);
+    }
+    .ai-summary h3 { color: #fff; }
+    .ai-summary p { margin-bottom: 0; color: rgba(255,255,255,.85); }
+    .summary-label { display: inline-block; margin-bottom: 9px; color: #ffdf7e; font-size: .76rem; font-weight: 900; letter-spacing: .09em; text-transform: uppercase; }
+    .stars { color: var(--gold); letter-spacing: .11em; font-size: 1.05rem; white-space: nowrap; }
+    .review-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .review-card { display: flex; flex-direction: column; padding: 21px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    .review-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+    .reviewer { color: var(--navy); font-weight: 900; }
+    .review-date { display: block; color: var(--muted); font-size: .8rem; font-weight: 400; }
+    .review-card p { color: var(--muted); }
+    .sample-status { display: inline-block; margin-top: auto; padding-top: 12px; color: #765a15; font-size: .78rem; font-weight: 800; }
+    .review-notice { margin-top: 18px; color: var(--muted); font-size: .84rem; text-align: center; }
+
+    /* Estimate form: front-end demonstration only */
+    .estimate-layout { display: grid; grid-template-columns: 1fr; gap: 30px; align-items: start; }
+    .estimate-intro { padding-top: 10px; }
+    .estimate-intro p { color: var(--muted); }
+    .form-panel { padding: 23px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; box-shadow: 0 6px 20px rgba(16,42,67,.06); }
+    .form-panel h3 { font-size: 1.5rem; }
+    .estimate-form { display: grid; grid-template-columns: 1fr; gap: 13px; margin-top: 18px; }
+    .estimate-form label { display: block; margin-bottom: 5px; color: var(--navy); font-size: .86rem; font-weight: 800; }
+    .estimate-form input, .estimate-form select, .estimate-form textarea {
+      width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid #c8d2dc; border-radius: 5px;
+      color: var(--ink); background: #fff;
+    }
+    .estimate-form textarea { min-height: 95px; resize: vertical; }
+    .form-message { margin: 12px 0 0; color: var(--navy); font-weight: 700; }
+
+    /* 7. Portal CTA and footer */
+    .portal-section { padding: 46px 0; color: #fff; background: var(--red); }
+    .portal-inner { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; }
+    .portal-section h2 { color: #fff; margin-bottom: 9px; }
+    .portal-section p { max-width: 700px; margin-bottom: 0; color: rgba(255,255,255,.91); }
+    .footer { padding: 46px 0 20px; color: rgba(255,255,255,.79); background: var(--navy-deep); }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+    .footer h3 { margin-bottom: 13px; color: #fff; font-size: 1.02rem; }
+    .footer-brand { color: #fff; font-size: 1.08rem; font-weight: 900; }
+    .footer p, .footer address { color: rgba(255,255,255,.76); font-size: .91rem; font-style: normal; }
+    .footer a { color: #fff; text-underline-offset: 3px; }
+    .footer-links { display: grid; gap: 8px; }
+    .partner-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .partner-badge { padding: 7px 10px; border: 1px solid rgba(255,255,255,.26); border-radius: 5px; color: #fff; font-size: .78rem; font-weight: 800; }
+    .footer-note { color: rgba(255,255,255,.61) !important; font-size: .78rem !important; }
+    .footer-bottom { display: flex; flex-direction: column; gap: 8px; margin-top: 30px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.17); font-size: .8rem; }
+    .mobile-call-bar {
+      position: fixed; z-index: 90; right: 0; bottom: 0; left: 0; display: flex; padding: 9px 12px;
+      background: rgba(255,255,255,.97); box-shadow: 0 -4px 18px rgba(8,27,42,.12);
+    }
+    .mobile-call-bar .btn { width: 100%; }
+
+    @media (min-width: 620px) {
+      .container { width: min(var(--max-width), calc(100% - 48px)); }
+      .utility-inner { flex-direction: row; justify-content: space-between; text-align: left; }
+      .hero-actions { flex-direction: row; flex-wrap: wrap; max-width: none; }
+      .trust-items { grid-template-columns: repeat(4, 1fr); }
+      .trust-item { padding: 18px 12px; font-size: .86rem; }
+      .trust-item:nth-child(-n+2) { border-bottom: 0; }
+      .trust-item:last-child { border-right: 0; }
+      .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .comparison, .comparison img { min-height: 320px; }
+      .ai-summary { grid-template-columns: .7fr 1.3fr; align-items: center; padding: 32px; }
+      .review-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .portal-inner { flex-direction: row; align-items: center; justify-content: space-between; }
+      .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .footer-bottom { flex-direction: row; justify-content: space-between; }
+      .estimate-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .estimate-form .full { grid-column: 1 / -1; }
+      .mobile-call-bar { display: none; }
+      body { padding-bottom: 0; }
+    }
+    @media (min-width: 960px) {
+      .header-inner { min-height: 88px; }
+      .nav-toggle { display: none; }
+      .main-nav { display: block; position: static; padding: 0; border: 0; box-shadow: none; background: transparent; }
+      .nav-links { flex-direction: row; align-items: center; gap: 2px; }
+      .nav-links a { padding: 12px 9px; font-size: .88rem; }
+      .header-cta { display: inline-flex; }
+      .hero { min-height: 650px; }
+      .section { padding: 82px 0; }
+      .service-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .gallery-layout { grid-template-columns: 1.15fr .85fr; gap: 52px; }
+      .comparison, .comparison img { min-height: 390px; }
+      .review-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .estimate-layout { grid-template-columns: .85fr 1.15fr; gap: 52px; }
+      .footer-grid { grid-template-columns: 1.2fr 1fr 1fr 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+
+    /* Traditional local repair-shop finish */
+    :root {
+      --navy: #0a192f;
+      --navy-deep: #0a192f;
+      --blue: #244766;
+      --red: #dc2626;
+      --red-hover: #b91c1c;
+      --ink: #333333;
+      --muted: #555f68;
+      --line: #cbd2d8;
+      --surface: #f2f3f4;
+      --white: #fff;
+      --gold: #f4b400;
+      --green: #2f7046;
+      --radius: 0;
+      --shadow: none;
+    }
+
+    body { color: #333; background: #fff; }
+    .section { padding: 58px 0; }
+    .section--muted { background: #f2f3f4; }
+    h1, h2, h3 { color: #0a192f; letter-spacing: 0; }
+    h1 { font-weight: 800; }
+    h2 { font-weight: 800; }
+    .eyebrow { color: #b91c1c; letter-spacing: .08em; }
+    .section-heading p, .service-card p, .gallery-copy p,
+    .estimate-intro p { color: #4b535a; }
+
+    .btn {
+      border-radius: 2px;
+      box-shadow: none;
+      transition: background .18s ease;
+    }
+    .btn:hover { transform: none; }
+    .btn--red { background: #dc2626; }
+    .btn--red:hover { background: #b91c1c; }
+    .btn--navy { background: #0a192f; }
+    .btn--navy:hover { background: #172b45; }
+    .btn--white { border: 1px solid #fff; border-radius: 2px; }
+    .btn--outline { border-radius: 2px; }
+    .text-link { color: #b91c1c; }
+
+    .utility-bar { background: #0a192f; }
+    .language-toggle {
+      padding: 5px 10px;
+      border: 1px solid #fff;
+      color: #0a192f;
+      background: #fff;
+    }
+    .site-header { border-bottom: 3px solid #dc2626; box-shadow: none; }
+    .brand-mark { border-radius: 0; background: transparent; }
+    .brand-name { color: #0a192f; }
+    .nav-toggle { border-radius: 0; }
+    .main-nav { box-shadow: none; }
+    .nav-links { gap: 8px; }
+    .nav-links a {
+      border-radius: 0;
+      color: #333;
+      font-weight: 700;
+    }
+    .nav-links a:hover { color: #b91c1c; background: transparent; }
+
+    .hero .eyebrow { color: #fff; }
+    .hero h1 { color: #fff; }
+    .hero-copy, .hero-note { color: #fff; }
+    .hero .btn--outline { border-color: #fff; }
+
+    .trust-strip { border-color: #cbd2d8; }
+    .trust-item { color: #333; }
+    .trust-item:hover { text-decoration: underline; }
+    .trust-symbol {
+      border: 1px solid #cbd2d8;
+      border-radius: 0;
+      color: #0a192f;
+      background: #f2f3f4;
+    }
+    .service-card {
+      border: 1px solid #bfc7ce;
+      border-top: 3px solid #0a192f;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .service-icon {
+      border: 1px solid #cbd2d8;
+      border-radius: 0;
+      color: #0a192f;
+      background: #f2f3f4;
+    }
+    .comparison { border: 1px solid #bfc7ce; border-radius: 0; box-shadow: none; }
+    .comparison figcaption { border-radius: 0; }
+
+    .ai-summary {
+      border: 1px solid #0a192f;
+      border-radius: 0;
+      background: #0a192f;
+    }
+    .review-card {
+      border: 1px solid #bfc7ce;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .sample-status { color: #66531e; }
+
+    .form-panel {
+      border: 1px solid #bfc7ce;
+      border-top: 3px solid #0a192f;
+      border-radius: 0;
+      box-shadow: none;
+    }
+    .estimate-form input, .estimate-form select, .estimate-form textarea {
+      border-color: #aeb8c1;
+      border-radius: 0;
+    }
+    .estimate-form input:focus, .estimate-form select:focus,
+    .estimate-form textarea:focus { border-color: #0a192f; }
+
+    .portal-section { background: #dc2626; }
+    .footer { background: #0a192f; }
+    .partner-badge { border-radius: 0; }
+    .mobile-call-bar {
+      border-top: 1px solid #cbd2d8;
+      background: #fff;
+      box-shadow: none;
+    }
+
+    @media (min-width: 960px) {
+      .nav-links { gap: 12px; }
+      .nav-links a { padding: 12px 6px; }
+    }
+
+    /* Late-2000s local-business layout */
+    :root { --max-width: 960px; }
+    body {
+      color: #333;
+      background: #e7e7e7;
+      font: 13px/1.5 Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing: auto;
+    }
+    .container { width: min(960px, calc(100% - 24px)); }
+    .section { padding: 32px 0; }
+    .section--muted { background: #f2f2f2; }
+    h1, h2, h3 { line-height: 1.25; }
+    h1 { font-size: 32px; }
+    h2 { font-size: 24px; }
+    h3 { font-size: 17px; }
+    .eyebrow {
+      margin-bottom: 7px;
+      font-size: 11px;
+      letter-spacing: .04em;
+    }
+    .section-heading { margin: 0 0 22px; text-align: left; }
+    .section-heading p { margin-bottom: 0; }
+    a { color: #174f82; }
+    .text-link { color: #174f82; text-decoration: underline; }
+
+    .utility-bar { font-size: 12px; }
+    .utility-inner { padding-block: 6px; }
+    .language-toggle {
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .site-header {
+      position: relative;
+      top: auto;
+      border-bottom: 0;
+      background: #fff;
+    }
+    .header-inner {
+      min-height: 76px;
+      gap: 12px;
+    }
+    .brand { gap: 9px; }
+    .brand-mark {
+      width: 78px;
+      height: 44px;
+      object-fit: contain;
+    }
+    .brand-name { font-size: 16px; }
+    .brand-tagline { font-size: 10px; letter-spacing: .04em; }
+    .header-cta {
+      min-height: 36px;
+      padding: 7px 12px;
+      border: 1px solid #9d1717;
+      border-radius: 3px;
+      background: linear-gradient(#e44343, #b51d1d);
+      font-size: 12px;
+      box-shadow: inset 0 1px rgba(255,255,255,.35);
+    }
+    .main-nav {
+      border-top: 1px solid #0b3559;
+      border-bottom: 1px solid #082845;
+      background: linear-gradient(#28618e, #17446c);
+    }
+    .nav-links a {
+      color: #fff;
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .nav-links a:hover { color: #fff; background: #b51d1d; }
+
+    .hero {
+      min-height: 360px;
+      background-position: center;
+    }
+    .hero::before { background: rgba(8, 31, 53, .78); }
+    .hero-content {
+      max-width: 650px;
+      padding-block: 42px;
+    }
+    .hero h1 {
+      max-width: 600px;
+      margin-bottom: 12px;
+      font-size: 36px;
+    }
+    .hero-copy { max-width: 550px; font-size: 15px; }
+    .hero-actions { margin-top: 18px; }
+    .hero-note { margin-top: 13px; font-size: 13px; }
+
+    .btn {
+      min-height: 38px;
+      padding: 8px 14px;
+      border-width: 1px;
+      border-radius: 3px;
+      font-size: 13px;
+      box-shadow: inset 0 1px rgba(255,255,255,.28);
+    }
+    .btn--red {
+      border-color: #9d1717;
+      background: linear-gradient(#e44343, #b51d1d);
+    }
+    .btn--red:hover { background: linear-gradient(#d43232, #9e1717); }
+    .btn--navy {
+      border-color: #0a2d4b;
+      background: linear-gradient(#28618e, #17446c);
+    }
+    .btn--white { border-color: #ccc; }
+    .btn--outline { border-width: 1px; }
+
+    .trust-items { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .trust-item {
+      padding: 12px 8px;
+      font-size: 12px;
+    }
+    .trust-symbol {
+      width: 25px;
+      height: 25px;
+      font-size: 13px;
+    }
+    .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .service-card {
+      padding: 17px;
+      border: 1px solid #c4cbd1;
+      border-top: 2px solid #28618e;
+      background: #fff;
+    }
+    .service-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+    .service-footer { margin-top: 19px; }
+    .gallery-layout { gap: 30px; }
+    .comparison, .comparison img { min-height: 290px; }
+    .comparison figcaption { font-size: 11px; }
+    .ai-summary { gap: 14px; padding: 20px; }
+    .review-grid { gap: 12px; }
+    .review-card { padding: 16px; }
+    .form-panel { padding: 18px; }
+    .portal-section { padding: 27px 0; }
+    .portal-section h2 { font-size: 23px; }
+    .footer { padding: 32px 0 16px; }
+    .footer-grid { gap: 20px; }
+    .partner-badge { padding: 5px 8px; }
+
+    @media (min-width: 620px) {
+      .container { width: min(960px, calc(100% - 32px)); }
+      .header-inner { min-height: 76px; }
+    }
+    @media (min-width: 960px) {
+      .container { width: 960px; }
+      .header-inner { min-height: 76px; }
+      .main-nav {
+        display: block;
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        padding: 0;
+        box-shadow: none;
+      }
+      .nav-links { gap: 0; }
+      .nav-links a {
+        padding: 10px 14px;
+        border-right: 1px solid rgba(255,255,255,.2);
+        font-size: 12px;
+      }
+      .hero { min-height: 360px; }
+      .section { padding: 36px 0; }
+      .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery-layout { grid-template-columns: 1fr 1fr; gap: 30px; }
+      .comparison, .comparison img { min-height: 290px; }
+      .review-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .footer-grid { grid-template-columns: 1.2fr 1fr 1fr 1fr; }
+    }
+    @media (max-width: 959px) {
+      .main-nav {
+        border-top: 1px solid #0b3559;
+        background: #17446c;
+      }
+      .main-nav.is-open { display: block; }
+      .nav-links a { padding: 10px 12px; }
+    }
+    @media (max-width: 619px) {
+      .trust-items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .trust-item:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .hero { min-height: 340px; }
+      .hero h1 { font-size: 30px; }
+      .service-grid { grid-template-columns: 1fr; }
+    }
+    .comparison { display: block; min-height: 0; }
+    .comparison > img { width: 100%; height: auto; min-height: 0; object-fit: contain; }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+    .utility-inner {
+      justify-content: flex-end;
+      align-items: flex-end;
+      text-align: right;
+    }
+    .affiliate-label {
+      margin: 0 auto 0 0;
+      padding-left: 12px;
+      border-left: 4px solid var(--red);
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.2;
+      text-align: left;
+    }
+    .affiliate-group { display: flex; align-items: center; gap: 8px; min-width: 0; margin-right: auto; }
+    .affiliate-logos { display: flex; align-items: center; gap: 7px; }
+    .affiliate-logo-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 42px;
+      padding: 3px 6px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 6px;
+      background: #fff;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .affiliate-logo-link:hover { transform: translateY(-1px); box-shadow: 0 3px 10px rgba(0,0,0,.25); }
+    .affiliate-logo-link:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .affiliate-logo { display: block; width: 150px; height: 34px; object-fit: contain; }
+    .affiliate-logo--wdc { width: 58px; height: 34px; }
+    .affiliate-logo-link[aria-current="page"] { display: none; }
+    @media (max-width: 619px) {
+      .utility-inner { align-items: center; }
+      .affiliate-group { width: 100%; margin-right: 0; flex-wrap: wrap; justify-content: center; }
+      .affiliate-label { margin-right: 0; font-size: 1.1rem; }
+      .affiliate-logo-link { height: 38px; }
+      .affiliate-logo { width: 126px; height: 30px; }
+      .affiliate-logo--wdc { width: 48px; height: 30px; }
+    }
+    .authorization-gallery { display: block; }
+    .authorization-gallery figure {
+      margin: 0;
+      padding: 8px;
+      border: 1px solid #c4cbd1;
+      background: #fff;
+    }
+    .authorization-gallery img { display: block; width: 100%; height: auto; }
+    .authorization-gallery figcaption {
+      padding-top: 7px;
+      color: #4b535a;
+      font-size: 12px;
+    }
+    .about-map { margin-top: 28px; }
+    .about-map h3 { margin-bottom: 12px; }
+    .about-map iframe {
+      display: block;
+      width: 100%;
+      height: 340px;
+      border: 1px solid #c4cbd1;
+      background: #f2f2f2;
+    }
+    .map-address { margin-top: 8px; }
+  </style>
+</head>
+
+<body>
+  <!-- 1. Top utility bar -->
+  <div class="utility-bar">
+    <div class="container utility-inner">
+      <div class="affiliate-group">
+        <p class="affiliate-label" data-en="Meet our affiliates" data-es="Conozca a nuestros afiliados">Meet our affiliates</p>
+        <div class="affiliate-logos" aria-label="Affiliate websites">
+          <a class="affiliate-logo-link" href="index.html" target="_blank" rel="noopener noreferrer" aria-current="page" aria-label="West Delray Collision Center">
+            <img class="affiliate-logo affiliate-logo--wdc" src="assets/west-delray-collision-logo.webp" alt="West Delray Collision Center">
+          </a>
+          <a class="affiliate-logo-link" href="shining-star-collision.html" aria-label="Shining Star Collision">
+            <img class="affiliate-logo" src="assets/shining-star-collision-logo.png" alt="Shining Star Collision">
+          </a>
+          <a class="affiliate-logo-link" href="the-collision-star.html" target="_blank" rel="noopener noreferrer" aria-label="The Collision Star">
+            <img class="affiliate-logo" src="assets/collision-star-logo.jpg" alt="The Collision Star">
+          </a>
+        </div>
+      </div>
+      <button class="language-toggle" type="button" id="language-toggle" aria-label="Switch page language to Spanish">Hablamos Español</button>
+    </div>
+  </div>
+
+  <!-- 2. Logo, navigation, and primary CTA -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="West Delray Collision Center home">
+        <img class="brand-mark" src="west-delray-collision-logo.webp" alt="West Delray Collision Center logo" width="78" height="44">
+        <span>
+          <span class="brand-name">West Delray<br>Collision Center</span>
+          <span class="brand-tagline">Collision Repair &amp; Restoration</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-navigation" aria-label="Open navigation menu">
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <nav class="main-nav" id="main-navigation" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#services" data-en="Services" data-es="Servicios">Services</a></li>
+          <li><a href="#faq" data-en="FAQs" data-es="Preguntas frecuentes">FAQs</a></li>
+          <li><a href="#before-after" data-en="Before and After" data-es="Antes y Después">Before and After</a></li>
+          <li><a href="#about" data-en="About Us" data-es="Nosotros">About Us</a></li>
+          <li><a href="#contact" data-en="Contact Us" data-es="Contacto">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--red header-cta" href="#estimate" data-en="Schedule an Appointment" data-es="Programar una cita">Schedule an Appointment</a>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- 3. Hero section -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-content">
+          <p class="eyebrow" data-en="Collision Repair in Delray Beach, Florida" data-es="Reparación de colisiones en Delray Beach, Florida">Collision Repair in Delray Beach, Florida</p>
+          <h1 id="hero-title" data-en="Where Precision Meets Perfection in Auto Repair!" data-es="¡Donde la precisión se une con la perfección en la reparación automotriz!">Where Precision Meets Perfection in Auto Repair!</h1>
+          <p class="hero-copy" data-en="From everyday dents to major collision damage, our team can help you understand the repair process and coordinate next steps with your insurer." data-es="Desde abolladuras hasta daños importantes por colisión, nuestro equipo puede ayudarle a entender el proceso de reparación y coordinar los próximos pasos con su aseguradora.">From everyday dents to major collision damage, our team can help you understand the repair process and coordinate next steps with your insurer.</p>
+          <div class="hero-actions">
+            <a class="btn btn--red" href="tel:+15616388300" data-en="☎ Call Us" data-es="☎ Llámenos">☎ Call Us</a>
+            <a class="btn btn--outline" href="#estimate" data-en="Get an Estimate" data-es="Solicitar una estimación">Get an Estimate</a>
+          </div>
+          <p class="hero-note" data-en="Clear communication from estimate to delivery." data-es="Comunicación clara desde la estimación hasta la entrega.">Clear communication from estimate to delivery.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Short trust strip -->
+    <section class="trust-strip" aria-label="Service highlights">
+      <div class="container trust-items">
+        <a class="trust-item" href="#service-collision"><span class="trust-symbol" aria-hidden="true">✓</span><span data-en="Collision Repair" data-es="Reparación de colisiones">Collision Repair</span></a>
+        <a class="trust-item" href="#service-pdr"><span class="trust-symbol" aria-hidden="true">◉</span><span data-en="Paintless Dent Repair" data-es="Reparación de abolladuras sin pintura">Paintless Dent Repair</span></a>
+        <a class="trust-item" href="#service-aluminum"><span class="trust-symbol" aria-hidden="true">✦</span><span data-en="Aluminum Body Repair" data-es="Reparación de carrocería de aluminio">Aluminum Body Repair</span></a>
+        <a class="trust-item" href="#service-frame"><span class="trust-symbol" aria-hidden="true">▤</span><span data-en="Computerized Frame Straightening" data-es="Enderezado computarizado del chasis">Computerized Frame Straightening</span></a>
+      </div>
+    </section>
+
+    <!-- 4. Core services -->
+    <section class="section section--muted" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="Our Services" data-es="Nuestros servicios">Our Services</p>
+          <h2 id="services-title" data-en="Collision Repair, Made Clear" data-es="Reparación de colisiones con claridad">Collision Repair, Made Clear</h2>
+          <p data-en="Straightforward repair options, professional assessment, and help understanding the next steps after an accident." data-es="Opciones claras de reparación, evaluación profesional y ayuda para comprender los próximos pasos después de un accidente.">Straightforward repair options, professional assessment, and help understanding the next steps after an accident.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card" id="service-aluminum"><div class="service-icon">⚙</div><h3 data-en="Aluminum Body Repair" data-es="Reparación de carrocería de aluminio">Aluminum Body Repair</h3><p data-en="Specialized aluminum repair helps restore your vehicle's strength and appearance." data-es="La reparación especializada de aluminio ayuda a restaurar la resistencia y apariencia del vehículo.">Specialized aluminum repair helps restore your vehicle's strength and appearance.</p><a class="text-link" href="#estimate" data-en="Ask about aluminum repair →" data-es="Consulte sobre reparación de aluminio →">Ask about aluminum repair →</a></article>
+          <article class="service-card" id="service-pdr"><div class="service-icon">◉</div><h3 data-en="Paintless Dent Repair (PDR)" data-es="Reparación de abolladuras sin pintura (PDR)">Paintless Dent Repair (PDR)</h3><p data-en="For eligible minor dents, PDR can remove damage without repainting." data-es="Para abolladuras menores que cumplan los requisitos, PDR puede eliminar el daño sin repintar.">For eligible minor dents, PDR can remove damage without repainting.</p><a class="text-link" href="#estimate" data-en="Ask about PDR →" data-es="Consulte sobre PDR →">Ask about PDR →</a></article>
+          <article class="service-card" id="service-collision"><div class="service-icon">⚙</div><h3 data-en="Collision Repair" data-es="Reparación de colisiones">Collision Repair</h3><p data-en="The team repairs damage from dents to frames, working to restore vehicles to their pre-accident condition." data-es="El equipo repara desde abolladuras hasta chasis, buscando restaurar los vehículos a su condición previa al accidente.">The team repairs damage from dents to frames, working to restore vehicles to their pre-accident condition.</p><a class="text-link" href="#estimate" data-en="Ask about collision repair →" data-es="Consulte sobre reparación de colisiones →">Ask about collision repair →</a></article>
+          <article class="service-card" id="service-color"><div class="service-icon">✦</div><h3 data-en="Computerized Color Matching" data-es="Igualación computarizada de color">Computerized Color Matching</h3><p data-en="Computerized color matching helps create a seamless match with your vehicle's original paint." data-es="La igualación computarizada ayuda a coincidir con la pintura original de su vehículo.">Computerized color matching helps create a seamless match with your vehicle's original paint.</p><a class="text-link" href="#estimate" data-en="Ask about paint matching →" data-es="Consulte sobre igualación de pintura →">Ask about paint matching →</a></article>
+          <article class="service-card" id="service-frame"><div class="service-icon">▤</div><h3 data-en="Computerized Frame Straightening" data-es="Enderezado computarizado del chasis">Computerized Frame Straightening</h3><p data-en="Computerized equipment helps restore your vehicle's frame to factory specifications." data-es="El equipo computarizado ayuda a restaurar el chasis del vehículo según las especificaciones de fábrica.">Computerized equipment helps restore your vehicle's frame to factory specifications.</p><a class="text-link" href="#estimate" data-en="Ask about frame repair →" data-es="Consulte sobre reparación del chasis →">Ask about frame repair →</a></article>
+          <article class="service-card" id="service-detailing"><div class="service-icon">✦</div><h3 data-en="Auto Detailing" data-es="Detallado de vehículos">Auto Detailing</h3><p data-en="Interior and exterior detailing helps your vehicle look and feel like new." data-es="El detallado interior y exterior ayuda a que su vehículo luzca y se sienta como nuevo.">Interior and exterior detailing helps your vehicle look and feel like new.</p><a class="text-link" href="#estimate" data-en="Ask about detailing →" data-es="Consulte sobre detallado →">Ask about detailing →</a></article>
+          <article class="service-card" id="service-mechanic"><div class="service-icon">⚒</div><h3 data-en="Onsite Mechanic" data-es="Mecánico en el lugar">Onsite Mechanic</h3><p data-en="Onsite mechanic services include minor repairs and inspections. Contact the shop to confirm availability." data-es="El servicio de mecánica en el lugar incluye reparaciones menores e inspecciones. Consulte disponibilidad con el taller.">Onsite mechanic services include minor repairs and inspections. Contact the shop to confirm availability.</p><a class="text-link" href="#estimate" data-en="Ask about onsite mechanic service →" data-es="Consulte sobre mecánica en el lugar →">Ask about onsite mechanic service →</a></article>
+          <article class="service-card" id="service-rental"><div class="service-icon">▣</div><h3 data-en="Onsite Car Rental" data-es="Alquiler de autos en el taller">Onsite Car Rental</h3><p data-en="Onsite rental cars help keep you mobile while your vehicle is being repaired. Ask about availability and rates." data-es="Los autos de alquiler en el taller ayudan a mantener su movilidad durante la reparación. Consulte disponibilidad y tarifas.">Onsite rental cars help keep you mobile while your vehicle is being repaired. Ask about availability and rates.</p><a class="text-link" href="#estimate" data-en="Ask about rental cars →" data-es="Consulte sobre autos de alquiler →">Ask about rental cars →</a></article>
+          <article class="service-card" id="service-towing"><div class="service-icon">↗</div><h3 data-en="24/7 Towing" data-es="Remolque las 24 horas">24/7 Towing</h3><p data-en="The shop offers 24/7 towing to bring your vehicle to the facility. Call to confirm service area and availability." data-es="El taller ofrece remolque las 24 horas para llevar su vehículo al establecimiento. Llame para confirmar el área y disponibilidad.">The shop offers 24/7 towing to bring your vehicle to the facility. Call to confirm service area and availability.</p><a class="text-link" href="tel:+15616388300" data-en="Call about towing →" data-es="Llame para consultar sobre remolque →">Call about towing →</a></article>
+        </div>
+        <p class="small-note" data-en="The shop describes its approach as including repair of eligible unrelated dents or scratches already on the vehicle." data-es="Consulte si se pueden atender abolladuras o rayones anteriores que cumplan los requisitos junto con la reparación de colisión.">The shop describes its approach as including repair of eligible unrelated dents or scratches already on the vehicle.</p>
+        <div class="service-footer"><a class="btn btn--navy" href="#estimate" data-en="Talk to Our Team" data-es="Hable con nuestro equipo">Talk to Our Team</a></div>
+      </div>
+    </section>
+
+    <!-- FAQs adapted from West Delray Collision Center's official website. -->
+    <section class="section section--muted" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="FAQs" data-es="Preguntas frecuentes">FAQs</p>
+          <h2 id="faq-title" data-en="Frequently Asked Questions" data-es="Preguntas frecuentes">Frequently Asked Questions</h2>
+          <p data-en="Answers to common questions about repairs, insurance, rentals, and estimates." data-es="Respuestas a preguntas comunes sobre reparaciones, seguros, alquileres y estimaciones.">Answers to common questions about repairs, insurance, rentals, and estimates.</p>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item"><summary data-en="How long will my repair take?" data-es="¿Cuánto tiempo tardará la reparación?">How long will my repair take?</summary><p data-en="Repair times depend on the extent of the damage. The shop strives to work efficiently without compromising quality." data-es="El tiempo de reparación depende de la magnitud del daño. El taller se esfuerza por trabajar eficientemente sin comprometer la calidad.">Repair times depend on the extent of the damage. The shop strives to work efficiently without compromising quality.</p></details>
+          <details class="faq-item"><summary data-en="Do you work with all insurance companies?" data-es="¿Trabajan con todas las compañías de seguros?">Do you work with all insurance companies?</summary><p data-en="The shop says it works with all major insurers to help simplify claims. Coverage and approvals depend on your policy and claim." data-es="El taller indica que trabaja con las principales aseguradoras para ayudar a simplificar los reclamos. La cobertura y las aprobaciones dependen de su póliza y reclamo.">The shop says it works with all major insurers to help simplify claims. Coverage and approvals depend on your policy and claim.</p></details>
+          <details class="faq-item"><summary data-en="Can I get a rental car during repairs?" data-es="¿Puedo obtener un auto de alquiler durante las reparaciones?">Can I get a rental car during repairs?</summary><p data-en="Onsite rental cars are available. Contact the shop to confirm availability, vehicle options, and rates." data-es="Hay autos de alquiler disponibles en el taller. Comuníquese con el taller para confirmar disponibilidad, opciones y tarifas.">Onsite rental cars are available. Contact the shop to confirm availability, vehicle options, and rates.</p></details>
+          <details class="faq-item"><summary data-en="What should I do immediately after an accident?" data-es="¿Qué debo hacer inmediatamente después de un accidente?">What should I do immediately after an accident?</summary><p data-en="Contact the shop for help with next steps, including towing and insurance claim coordination." data-es="Comuníquese con el taller para obtener ayuda con los próximos pasos, incluido el remolque y la coordinación del reclamo de seguro.">Contact the shop for help with next steps, including towing and insurance claim coordination.</p></details>
+          <details class="faq-item"><summary data-en="Do you offer free estimates?" data-es="¿Ofrecen estimaciones gratuitas?">Do you offer free estimates?</summary><p data-en="The shop offers free, no-obligation estimates in person and online." data-es="El taller ofrece estimaciones gratuitas y sin compromiso en persona y en línea.">The shop offers free, no-obligation estimates in person and online.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Before-and-after gallery. Replace sample photos with WDC-approved matching repair photos. -->
+    <section class="section" id="before-after" aria-labelledby="gallery-title">
+      <div class="container gallery-layout">
+        <figure class="comparison" aria-label="Before and after vehicle repair">
+          <img src="wdc-before-after.png" alt="A vehicle with collision damage before repair and fully repaired afterward." loading="lazy">
+          <figcaption class="visually-hidden"><span data-en="Before · illustrative" data-es="Antes · ilustrativo">Before · illustrative</span> <span data-en="After · illustrative" data-es="Después · ilustrativo">After · illustrative</span></figcaption>
+        </figure>
+        <div class="gallery-copy">
+          <p class="eyebrow" data-en="Before &amp; After" data-es="Antes y después">Before &amp; After</p>
+          <h2 id="gallery-title" data-en="See the Difference Careful Repair Can Make" data-es="Vea la diferencia que puede lograr una reparación cuidadosa">See the Difference Careful Repair Can Make</h2>
+          <p data-en="A real repair gallery should show the same vehicle before and after work, with clear captions and permission to publish. Authentic examples help customers understand the repair process and likely outcomes." data-es="Una galería real debe mostrar el mismo vehículo antes y después de la reparación, con leyendas claras y permiso para publicar. Los ejemplos auténticos ayudan a comprender el proceso y los resultados posibles.">A real repair gallery should show the same vehicle before and after work, with clear captions and permission to publish. Authentic examples help customers understand the repair process and likely outcomes.</p>
+          <a class="btn btn--red" href="#estimate" data-en="Discuss Your Vehicle" data-es="Consulte sobre su vehículo">Discuss Your Vehicle</a>
+          <p class="small-note" data-en="Prototype photos only. Replace with approved WDC repair photographs before public launch." data-es="Fotos de muestra. Reemplace con fotografías de reparaciones reales de WDC antes de publicar.">Prototype photos only. Replace with approved WDC repair photographs before public launch.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Google review area. Cards are obvious placeholders, not fabricated testimonials. -->
+    <section class="section section--muted" id="reviews" aria-labelledby="reviews-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="Customer Feedback" data-es="Opiniones de clientes">Customer Feedback</p>
+          <h2 id="reviews-title" data-en="What our customers say" data-es="Lo que dicen nuestros clientes">What our customers say</h2>
+          <p data-en="Real feedback can help future customers understand the service experience. Replace the sample content below with authentic, attributable reviews." data-es="Los comentarios reales ayudan a futuros clientes a comprender la experiencia de servicio. Reemplace el contenido de muestra con reseñas auténticas y atribuibles.">Real feedback can help future customers understand the service experience. Replace the sample content below with authentic, attributable reviews.</p>
+        </div>
+
+        <div class="ai-summary">
+          <div>
+            <span class="summary-label">✦ AI review summary · placeholder</span>
+            <h3 data-en="Common themes customers may care about" data-es="Temas que pueden importar a los clientes">Common themes customers may care about</h3>
+            <div class="stars" aria-label="Star display placeholder">★★★★★</div>
+          </div>
+          <div>
+            <p data-en="Draft summary placeholder: once genuine Google reviews are collected, use an AI-assisted summary to describe recurring themes such as communication, repair updates, staff helpfulness, and turnaround expectations. Do not publish this as a verified summary until it is based on actual reviews and has been checked by a person." data-es="Borrador: cuando se recopilen reseñas auténticas de Google, utilice un resumen asistido por IA para describir temas recurrentes como comunicación, actualizaciones, atención y tiempos de entrega. No publique este texto como resumen verificado hasta basarlo en reseñas reales y revisarlo.">Draft summary placeholder: once genuine Google reviews are collected, use an AI-assisted summary to describe recurring themes such as communication, repair updates, staff helpfulness, and turnaround expectations. Do not publish this as a verified summary until it is based on actual reviews and has been checked by a person.</p>
+            <p style="margin-top:10px;font-size:.82rem" data-en="Add verified Google average, review count, source attribution, and a link to WDC’s Google Business Profile." data-es="Añada el promedio verificado de Google, el número de reseñas, la atribución y el enlace al perfil de Google Business de WDC.">Add verified Google average, review count, source attribution, and a link to WDC’s Google Business Profile.</p>
+          </div>
+        </div>
+
+        <div class="review-grid">
+          <article class="review-card">
+            <div class="review-top"><div class="reviewer" data-en="Customer name placeholder" data-es="Nombre del cliente pendiente">Customer name placeholder<span class="review-date">Replace with verified date</span></div><span class="stars" aria-label="Five-star sample display">★★★★★</span></div>
+            <p data-en="Replace with an authentic customer review, quoted accurately and used in accordance with the source platform’s terms." data-es="Reemplace con una reseña auténtica, citada fielmente y conforme a las condiciones de la plataforma.">Replace with an authentic customer review, quoted accurately and used in accordance with the source platform’s terms.</p>
+            <span class="sample-status">ⓘ Sample card — not verified</span>
+          </article>
+          <article class="review-card">
+            <div class="review-top"><div class="reviewer" data-en="Customer name placeholder" data-es="Nombre del cliente pendiente">Customer name placeholder<span class="review-date">Replace with verified date</span></div><span class="stars" aria-label="Five-star sample display">★★★★★</span></div>
+            <p data-en="Use a second authentic review that describes a documented customer experience." data-es="Utilice otra reseña auténtica que describa una experiencia documentada.">Use a second authentic review that describes a documented customer experience.</p>
+            <span class="sample-status">ⓘ Sample card — not verified</span>
+          </article>
+          <article class="review-card">
+            <div class="review-top"><div class="reviewer" data-en="Customer name placeholder" data-es="Nombre del cliente pendiente">Customer name placeholder<span class="review-date">Replace with verified date</span></div><span class="stars" aria-label="Five-star sample display">★★★★★</span></div>
+            <p data-en="Add the review date only after checking it against the source." data-es="Añada la fecha solo después de verificarla con la fuente.">Add the review date only after checking it against the source.</p>
+            <span class="sample-status">ⓘ Sample card — not verified</span>
+          </article>
+          <article class="review-card">
+            <div class="review-top"><div class="reviewer" data-en="Customer name placeholder" data-es="Nombre del cliente pendiente">Customer name placeholder<span class="review-date">Replace with verified date</span></div><span class="stars" aria-label="Five-star sample display">★★★★★</span></div>
+            <p data-en="Prioritize useful feedback about service, communication, and the repair process without changing the reviewer’s meaning." data-es="Priorice comentarios útiles sobre el servicio, la comunicación y la reparación sin alterar el sentido de la reseña.">Prioritize useful feedback about service, communication, and the repair process without changing the reviewer’s meaning.</p>
+            <span class="sample-status">ⓘ Sample card — not verified</span>
+          </article>
+          <article class="review-card">
+            <div class="review-top"><div class="reviewer" data-en="Customer name placeholder" data-es="Nombre del cliente pendiente">Customer name placeholder<span class="review-date">Replace with verified date</span></div><span class="stars" aria-label="Five-star sample display">★★★★★</span></div>
+            <p data-en="Publish only after confirming the review’s origin and that attribution is appropriate." data-es="Publique solo después de confirmar el origen de la reseña y que la atribución sea apropiada.">Publish only after confirming the review’s origin and that attribution is appropriate.</p>
+            <span class="sample-status">ⓘ Sample card — not verified</span>
+          </article>
+        </div>
+        <p class="review-notice" data-en="Review names, dates, star displays, and statements above are placeholders—not claims about real Google reviews or verified endorsements." data-es="Los nombres, fechas, estrellas y textos anteriores son ejemplos; no son afirmaciones sobre reseñas reales ni recomendaciones verificadas.">Review names, dates, star displays, and statements above are placeholders—not claims about real Google reviews or verified endorsements.</p>
+      </div>
+    </section>
+
+    <section class="section section--muted" id="certifications" aria-labelledby="certifications-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="Our Shop" data-es="Nuestro taller">Our Shop</p>
+          <h2 id="certifications-title" data-en="Certified Technicians. Professional Equipment." data-es="Técnicos certificados. Equipo profesional.">Certified Technicians. Professional Equipment.</h2>
+          <p data-en="West Delray Collision Center repairs and refinishes all makes and models with experienced technicians and dedicated collision-repair equipment." data-es="West Delray Collision Center repara y pinta vehículos de todas las marcas y modelos con técnicos experimentados y equipo especializado para reparaciones de colisiones.">West Delray Collision Center repairs and refinishes all makes and models with experienced technicians and dedicated collision-repair equipment.</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">✓</div>
+            <h3 data-en="ASE and I-CAR Gold Class Technicians" data-es="Técnicos certificados por ASE e I-CAR Gold Class">ASE and I-CAR Gold Class Technicians</h3>
+            <p data-en="Our technicians hold ASE and I-CAR Gold Class certifications and bring specialized training to collision repair." data-es="Nuestros técnicos cuentan con certificaciones ASE e I-CAR Gold Class y capacitación especializada en reparación de colisiones.">Our technicians hold ASE and I-CAR Gold Class certifications and bring specialized training to collision repair.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">⚙</div>
+            <h3 data-en="Collision-Repair Equipment" data-es="Equipo para reparación de colisiones">Collision-Repair Equipment</h3>
+            <p data-en="The facility includes two spray booths, four frame-straightening machines, a laser frame-measuring system, and computerized paint mixing." data-es="El taller cuenta con dos cabinas de pintura, cuatro máquinas para enderezar chasis, un sistema láser para medir chasis y mezcla computarizada de pintura.">The facility includes two spray booths, four frame-straightening machines, a laser frame-measuring system, and computerized paint mixing.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-icon" aria-hidden="true">✦</div>
+            <h3 data-en="Refinishing and Written Warranty" data-es="Pintura y garantía por escrito">Refinishing and Written Warranty</h3>
+            <p data-en="The shop uses Spies Hecker refinishing products and provides a written warranty for refinished vehicles." data-es="El taller utiliza productos de repintado Spies Hecker y ofrece una garantía por escrito para los vehículos pintados.">The shop uses Spies Hecker refinishing products and provides a written warranty for refinished vehicles.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="dealer-authorized" aria-labelledby="dealer-authorized-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow" data-en="Repair Programs" data-es="Programas de reparación">Repair Programs</p>
+          <h2 id="dealer-authorized-title" data-en="Dealer-Authorized &amp; Recognized Repair Programs" data-es="Programas de reparación autorizados y reconocidos por fabricantes">Dealer-Authorized &amp; Recognized Repair Programs</h2>
+          <p data-en="West Delray Collision Center displays the following manufacturer and collision-repair program recognitions." data-es="West Delray Collision Center muestra los siguientes reconocimientos de fabricantes y programas de reparación de colisiones.">West Delray Collision Center displays the following manufacturer and collision-repair program recognitions.</p>
+        </div>
+        <div class="authorization-gallery">
+          <figure>
+            <img src="dealer-authorized-programs.webp" alt="Repair program graphics showing ProFirst Honda, Volkswagen Certified Collision Repair Facility, and MetLife CARE.">
+            <img src="dealer-authorized-programs-no-divider.png" alt="Repair program graphics showing Tesla Approved Body Shop, I-CAR Platinum, Hyundai Recognized Collision Repair Center, Volvo Certified Collision Centers, Infiniti, Nissan, Kia, Ford, GM, and FCA program marks.">
+            <figcaption data-en="Manufacturer-authorized and recognized collision-repair program graphics." data-es="Logotipos de programas de reparación de colisiones autorizados y reconocidos por fabricantes.">Manufacturer-authorized and recognized collision-repair program graphics.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supporting About section and estimate form -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container estimate-layout">
+        <div class="estimate-intro">
+          <p class="eyebrow" data-en="About West Delray Collision Center" data-es="Acerca de West Delray Collision Center">About West Delray Collision Center</p>
+          <h2 id="about-title" data-en="A Clear Path From Estimate to Repair" data-es="Un proceso claro desde la estimación hasta la reparación">A Clear Path From Estimate to Repair</h2>
+          <p data-en="After an accident, customers need a clear explanation of what happens next. A traditional collision-center experience should make it easy to call, request an estimate, discuss insurance coordination, and ask for repair updates." data-es="Después de un accidente, los clientes necesitan saber qué sigue. Un centro de colisiones debe facilitar las llamadas, solicitudes de estimación, coordinación con el seguro y consultas sobre el estado de reparación.">After an accident, customers need a clear explanation of what happens next. A traditional collision-center experience should make it easy to call, request an estimate, discuss insurance coordination, and ask for repair updates.</p>
+          <p data-en="Confirm the shop’s current services, equipment, certifications, warranties, and repair procedures before adding specific guarantees to this website." data-es="Confirme los servicios, equipos, certificaciones, garantías y procedimientos actuales antes de añadir garantías específicas a este sitio web.">Confirm the shop’s current services, equipment, certifications, warranties, and repair procedures before adding specific guarantees to this website.</p>
+          <a class="text-link" href="https://westdelraycollisioncenter.com/" target="_blank" rel="noopener noreferrer" data-en="Visit the current WDC website →" data-es="Visite el sitio web actual de WDC →">Visit the current WDC website →</a>
+          <h3 data-en="Locally Owned and Focused on the Community" data-es="Negocio local comprometido con la comunidad">Locally Owned and Focused on the Community</h3>
+          <p data-en="West Delray Collision Center describes itself as locally owned and operated in Delray Beach, serving customers throughout Palm Beach County. The shop emphasizes clear estimates, repair updates, and personal customer care." data-es="West Delray Collision Center se describe como un negocio local de Delray Beach que atiende a clientes en todo el condado de Palm Beach. El taller destaca estimaciones claras, actualizaciones sobre las reparaciones y atención personalizada.">West Delray Collision Center describes itself as locally owned and operated in Delray Beach, serving customers throughout Palm Beach County. The shop emphasizes clear estimates, repair updates, and personal customer care.</p>
+          <p data-en="The shop also describes its approach as including environmentally conscious materials and methods." data-es="El taller también describe su enfoque como el uso de materiales y métodos responsables con el medio ambiente.">The shop also describes its approach as including environmentally conscious materials and methods.</p>
+        </div>
+
+        <div class="form-panel" id="estimate">
+          <p class="eyebrow" data-en="Get Started" data-es="Comience aquí">Get Started</p>
+          <h3 data-en="Request an Estimate" data-es="Solicitar una estimación">Request an Estimate</h3>
+          <p style="color:var(--muted)" data-en="This form is a frontend demonstration only. It does not transmit or store your details." data-es="Este formulario es solo una demostración visual. No envía ni guarda sus datos.">This form is a frontend demonstration only. It does not transmit or store your details.</p>
+          <form class="estimate-form" id="estimate-form">
+            <div><label for="customer-name" data-en="Full name" data-es="Nombre completo">Full name</label><input id="customer-name" name="name" autocomplete="name" required></div>
+            <div><label for="customer-phone" data-en="Phone number" data-es="Número de teléfono">Phone number</label><input id="customer-phone" name="phone" type="tel" autocomplete="tel" required></div>
+            <div><label for="customer-email" data-en="Email address" data-es="Correo electrónico">Email address</label><input id="customer-email" name="email" type="email" autocomplete="email"></div>
+            <div><label for="vehicle" data-en="Vehicle (year, make, model)" data-es="Vehículo (año, marca, modelo)">Vehicle (year, make, model)</label><input id="vehicle" name="vehicle" placeholder="e.g., 2022 Honda Accord"></div>
+            <div class="full"><label for="service-type" data-en="What do you need help with?" data-es="¿Con qué necesita ayuda?">What do you need help with?</label>
+              <select id="service-type" name="service">                <option value="" data-en="Choose a service" data-es="Elija un servicio">Choose a service</option>
+                <option value="aluminum" data-en="Aluminum body repair" data-es="Reparación de carrocería de aluminio">Aluminum body repair</option>
+                <option value="pdr" data-en="Paintless dent repair" data-es="Reparación de abolladuras sin pintura">Paintless dent repair</option>
+                <option value="collision" data-en="Collision repair" data-es="Reparación de colisiones">Collision repair</option>
+                <option value="color" data-en="Computerized color matching" data-es="Igualación computarizada de color">Computerized color matching</option>
+                <option value="frame" data-en="Computerized frame straightening" data-es="Enderezado computarizado del chasis">Computerized frame straightening</option>
+                <option value="detailing" data-en="Auto detailing" data-es="Detallado de vehículos">Auto detailing</option>
+                <option value="mechanic" data-en="Onsite mechanic" data-es="Mecánico en el lugar">Onsite mechanic</option>
+                <option value="rental" data-en="Onsite car rental" data-es="Alquiler de autos en el taller">Onsite car rental</option>
+                <option value="towing" data-en="24/7 towing" data-es="Remolque las 24 horas">24/7 towing</option>
+                <option value="other" data-en="Other / not sure" data-es="Otro / no estoy seguro">Other / not sure</option>
+              </select>
+            </div>
+            <div class="full"><label for="message" data-en="Brief description (optional)" data-es="Breve descripción (opcional)">Brief description (optional)</label><textarea id="message" name="message" placeholder="Describe the damage or question. Do not include sensitive insurance/payment details."></textarea></div>
+            <div class="full">
+              <button class="btn btn--red" type="submit" data-en="Prepare Estimate Request" data-es="Preparar solicitud de estimación">Prepare Estimate Request</button>
+              <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="container about-map">
+        <h3 data-en="Find West Delray Collision Center" data-es="Encuentre West Delray Collision Center">Find West Delray Collision Center</h3>
+        <iframe
+          title="Map showing West Delray Collision Center in Delray Beach, Florida"
+          src="https://maps.google.com/maps?q=9701%20W.%20Atlantic%20Ave%2C%20Delray%20Beach%2C%20FL%2033446&amp;output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+        <p class="map-address"><a href="https://www.google.com/maps/search/?api=1&amp;query=9701%20W.%20Atlantic%20Ave%2C%20Delray%20Beach%2C%20FL%2033446" target="_blank" rel="noopener noreferrer" data-en="9701 W. Atlantic Ave., Delray Beach, FL 33446 — Get directions" data-es="9701 W. Atlantic Ave., Delray Beach, FL 33446 — Cómo llegar">9701 W. Atlantic Ave., Delray Beach, FL 33446 — Get directions</a></p>
+      </div>
+    </section>
+
+    <!-- 7a. Customer portal CTA. Replace homepage destination with WDC's verified secure portal URL. -->
+    <section class="portal-section" id="customer-portal" aria-labelledby="portal-title">
+      <div class="container portal-inner">
+        <div>
+          <h2 id="portal-title" data-en="Already Have a Repair in Progress?" data-es="¿Ya tiene una reparación en curso?">Already Have a Repair in Progress?</h2>
+          <p data-en="Use the secure customer status portal to follow repair progress and updates. The destination below is a temporary placeholder until WDC supplies the approved portal URL." data-es="Use el portal seguro para consultar el progreso y las actualizaciones. El destino es temporal hasta que WDC proporcione el enlace aprobado del portal.">Use the secure customer status portal to follow repair progress and updates. The destination below is a temporary placeholder until WDC supplies the approved portal URL.</p>
+        </div>
+        <a class="btn btn--white" href="https://westdelraycollisioncenter.com/" target="_blank" rel="noopener noreferrer" data-en="Customer Status Portal ↗" data-es="Portal de estado del cliente ↗">Customer Status Portal ↗</a>
+      </div>
+    </section>
+
+    <!-- 7b. Footer -->
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <div class="footer-brand">West Delray Collision Center</div>
+            <p style="margin-top:12px" data-en="Where Precision Meets Perfection in Auto Repair." data-es="Donde la precisión se une con la perfección en la reparación automotriz.">Where Precision Meets Perfection in Auto Repair.</p>
+            <p data-en="Collision repair service in Delray Beach and the surrounding South Florida area." data-es="Servicio de reparación de colisiones en Delray Beach y el área circundante del sur de Florida.">Collision repair service in Delray Beach and the surrounding South Florida area.</p>
+          </div>
+          <div>
+            <h3 data-en="Contact" data-es="Contacto">Contact</h3>
+            <!-- Confirm the current public address and email with WDC before launch. -->
+            <address>9701 W. Atlantic Ave.<br>Delray Beach, FL 33446</address>
+            <p style="margin-top:12px"><a href="tel:+15616388300">(561) 638-8300</a><br><a href="mailto:estimates@westdelraycollisioncenter.com">estimates@westdelraycollisioncenter.com</a></p>
+          </div>
+          <div>
+            <h3 data-en="Business Hours" data-es="Horario">Business Hours</h3>
+            <p data-en="Monday–Friday<br>7:30 AM – 5:30 PM" data-es="Lunes–viernes<br>7:30 AM – 5:30 PM">Monday–Friday<br>7:30 AM – 5:30 PM</p>
+            <p data-en="Saturday: 8:00 AM – 1:00 PM<br>Sunday: Closed" data-es="Sábado: 8:00 AM – 1:00 PM<br>Domingo: Cerrado">Saturday: 8:00 AM – 1:00 PM<br>Sunday: Closed</p>
+            <p class="footer-note" data-en="Confirm business hours before launch." data-es="Confirme el horario antes de publicar.">Confirm business hours before launch.</p>
+          </div>
+          <div>
+            <h3 data-en="Insurance &amp; Resources" data-es="Seguros y recursos">Insurance &amp; Resources</h3>
+            <p data-en="Ask the shop about your insurer and claim requirements." data-es="Consulte con el taller sobre su aseguradora y los requisitos del reclamo.">Ask the shop about your insurer and claim requirements.</p>
+            <div class="partner-list" aria-label="Illustrative insurance provider names, not confirmed endorsements">
+              <span class="partner-badge">Progressive*</span><span class="partner-badge">Allstate*</span><span class="partner-badge">AAA*</span>
+            </div>
+            <p class="footer-note" style="margin-top:10px" data-en="*Illustrative names only. Confirm relationships and permissions before using partner logos." data-es="*Nombres ilustrativos. Confirme relaciones y permisos antes de utilizar logotipos.">*Illustrative names only. Confirm relationships and permissions before using partner logos.</p>
+            <div class="footer-links"><a href="#services" data-en="Services" data-es="Servicios">Services</a><a href="#estimate" data-en="Request an estimate" data-es="Solicitar estimación">Request an estimate</a><a href="#before-after" data-en="Before and after" data-es="Antes y después">Before and after</a></div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© <span id="copyright-year">2026</span> West Delray Collision Center. <span data-en="All rights reserved." data-es="Todos los derechos reservados.">All rights reserved.</span></span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Mobile sticky call CTA; hidden at tablet/desktop sizes -->
+  <div class="mobile-call-bar">
+    <a class="btn btn--red" href="tel:+15616388300">☎ <span data-en="Call (561) 638-8300" data-es="Llamar al (561) 638-8300">Call (561) 638-8300</span></a>
+  </div>
+
+  <script>
+    (() => {
+      const menuButton = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('#main-navigation');
+      const languageButton = document.querySelector('#language-toggle');
+      let currentLanguage = 'en';
+
+      // Accessible responsive navigation.
+      function closeMenu() {
+        nav.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation menu');
+        menuButton.querySelector('span').textContent = '☰';
+      }
+
+      menuButton.addEventListener('click', () => {
+        const open = nav.classList.toggle('is-open');
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+        menuButton.querySelector('span').textContent = open ? '×' : '☰';
+      });
+      nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape') closeMenu();
+      });
+      document.addEventListener('click', event => {
+        if (!nav.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
+      });
+
+      // Lightweight English / Spanish text switch for elements with data-en and data-es.
+      // This is a starter bilingual implementation, not a professional translation review.
+      function setLanguage(language) {
+        currentLanguage = language;
+        document.documentElement.lang = language;
+        document.querySelectorAll('[data-en][data-es]').forEach(element => {
+          const translated = element.getAttribute(`data-${language}`);
+          if (translated !== null) element.innerHTML = translated;
+        });
+        languageButton.textContent = language === 'en' ? 'Hablamos Español' : 'View in English';
+        languageButton.setAttribute('aria-label', language === 'en' ? 'Switch page language to Spanish' : 'Cambiar el idioma de la página a inglés');
+      }
+      languageButton.addEventListener('click', () => setLanguage(currentLanguage === 'en' ? 'es' : 'en'));
+
+      // Set current year automatically.
+      document.querySelector('#copyright-year').textContent = new Date().getFullYear();
+
+      // Demo-only form behavior: prevent false submission claims and do not store user inputs.
+      const form = document.querySelector('#estimate-form');
+      const formMessage = document.querySelector('#form-message');
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        formMessage.textContent = currentLanguage === 'en'
+          ? 'Demo only: no information was sent or saved. Connect this form to WDC’s approved secure intake system before launch.'
+          : 'Demostración: no se envió ni guardó información. Conecte el formulario al sistema seguro aprobado por WDC antes de publicarlo.';
+      });
+    })();
+  </script>
+</body>
+</html>
